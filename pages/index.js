@@ -75,7 +75,7 @@ function index() {
       const config = {
         method: "post",
         maxBodyLength: Infinity,
-        url: "http://localhost:3000/api/sendemail",
+        url: "https://paymentgatewaymatic.vercel.app/api/sendemail",
         headers: {
           "Content-Type": "application/json",
         },
