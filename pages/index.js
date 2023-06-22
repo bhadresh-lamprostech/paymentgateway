@@ -95,17 +95,20 @@ function index() {
 
   return (
     <div>
-    <div className="flex justify-center items-center h-screen w-screen">
-     
+      <div className="flex justify-center items-center h-screen w-screen">
         {" "}
         <div className="w-70 pr-6 mr-4">
           {" "}
           {/* Added "mr-4" class for right margin */}
-          <h2 className="text-3xl font-semibold text-gray-100 mb-4 text-black">
+          <h2 className="text-3xl font-semibold mb-4 text-black">
             Welcome!
           </h2>
           <ConnectKitButton />
-          <p className="text-gray-500 mb-6">Connect wallet to pay.</p>
+          <p className="text-black-500 mb-6">Connect Polygon mumbai testnet to pay.</p>
+          <p className="text-black-500 mb-6">0.01 Matic will be deduct from your account</p>
+          <p className="text-black-500 mb-6">You will get transection reciept after complation of your transaction</p>
+
+
         </div>
         <div className="w-30">
           <div className="bg-gray-900 p-10 rounded-3xl shadow-xl">
