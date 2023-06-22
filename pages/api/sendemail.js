@@ -1,9 +1,9 @@
 // pages/api/sendEmail.js
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    res.status(405).json({ message: 'Method Not Allowed' });
+  if (req.method !== "POST") {
+    res.status(405).json({ message: "Method Not Allowed" });
     return;
   }
 
@@ -13,12 +13,12 @@ export default async function handler(req, res) {
 
     // Create a Nodemailer transporter using SMTP
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
+      host: "smtp.gmail.com",
       port: 587,
       secure: false, // Set to true if using a secure connection (TLS/SSL)
       auth: {
-        user: '0xbhadresh.eth@gmail.com',
-        pass: 'efkeagcvxmdhymyc',
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
 
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     `;
 
     const mailOptions = {
-      from: '0xbhadresh.eth@gmail.com',
+      from: "0xbhadresh.eth@gmail.com",
       to,
       subject,
       html: htmlContent,
@@ -39,11 +39,11 @@ export default async function handler(req, res) {
     // Send the email
     const info = await transporter.sendMail(mailOptions);
 
-    console.log('Email sent:', info.messageId);
+    console.log("Email sent:", info.messageId);
 
-    res.status(200).json({ message: 'Email sent successfully' });
+    res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ message: 'Failed to send email' });
+    console.error("Error sending email:", error);
+    res.status(500).json({ message: "Failed to send email" });
   }
 }
